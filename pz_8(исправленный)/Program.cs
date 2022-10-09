@@ -29,10 +29,7 @@
                     else if (i == 8 - j - 1)
                         vector2[i] = A[i, j];
             }
-            Console.WriteLine("\nПобочная диагональ:");
-
-            foreach (double v in vector2) Console.Write(v + "\t");
-
+            Console.WriteLine("\nПобочная диагональ:");           
             foreach (double v in vector2)
                 Console.Write(v + "\t");
 
