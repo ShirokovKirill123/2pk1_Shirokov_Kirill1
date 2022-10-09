@@ -8,7 +8,7 @@
             double[][] A = new double[10][];
             for (int i = 0; i < 10; i++)
             {
-                A[i] = new double[random.Next(3, 30)];
+                A[i] = new double[random.Next(3,31)];
             }
             Console.WriteLine("Полученный массив:\n");
             for (int i = 0; i < 10; i++)
