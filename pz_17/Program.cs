@@ -7,17 +7,31 @@
             HP = 31;
             power = 5;
             char[,] map = new char[25, 25];
-            char P = 'P';
+            char P = 'P';                        
+            int i = 0;
+            char direction = '2';
             char h1 = 'H';
             char h2 = 'H';
             char h3 = 'H';
             char h4 = 'H';
             char h5 = 'H';
-            Healing(ref HP, ref h1, ref h2, ref h3, ref h4, ref h5);
-            //Buff(ref power, HP)
-            int i = 0;
-            char direction = '2';
-            if (power == 10 && ((Move(ref P, map, ref direction) == 'w') || (Move(ref P, map, ref direction) == 'a') || (Move(ref P, map, ref direction) == 's') || (Move(ref P, map, ref direction) == 'd')))
+            char b1 = 'B';
+            char b2 = 'B';
+            char b3 = 'B';
+            char b4 = 'B';
+            char b5 = 'B';
+            char e1 = 'E';
+            char e2 = 'E';
+            char e3 = 'E';
+            char e4 = 'E';
+            char e5 = 'E';
+            char e6 = 'E';
+            char e7 = 'E';
+            char e8 = 'E';
+            char e9 = 'E';
+            char e10 = 'E';
+            char e11 = 'S';
+            if (power == 10 && ((Move(ref  e1, ref  e2, ref  e3, ref  e4, ref  e5, ref  e6, ref  e7, ref  e8, ref  e9, ref  e10, ref  e11, ref  h1, ref  h2, ref  h3, ref  h4, ref  h5, ref  b1, ref  b2, ref  b3, ref  b4, ref  b5, ref  HP, ref  power, ref  P,map, ref direction) == 'w') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, map, ref direction) == 'a') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, map, ref direction) == 's') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, map, ref direction) == 'd')))
             {
                 i++;
                 if (i == 5)
@@ -39,8 +53,8 @@
             h3 = 'H';
             h4 = 'H';
             h5 = 'H';
-            Healing(ref HP, ref h1, ref h2, ref h3, ref h4, ref h5);
-            Buff(ref power, HP, ref b1, ref b2, ref b3, ref b4, ref b5);
+            Healing(ref h1, ref h2, ref h3, ref h4, ref h5);
+            Buff(ref b1, ref b2, ref b3, ref b4, ref b5);            
             Random rnd = new Random();
             int x1 = rnd.Next(0, 25);
             int y1 = rnd.Next(0, 25);
@@ -286,25 +300,36 @@
         }
         public static void UpdateMap()//обновление карты после действий
         {
-            //Все совершаемые в игре действия(в конце сделаем)
+            //Все совершаемые в игре действия
+
             Console.Clear();
         }
-        public static char Move(ref char P, char[,] map, ref char direction)//реализация перемещения на нужную ячейку в связи с выбранным направлением direction, подсчет шагов
+        public static char Move(ref char e1, ref char e2, ref char e3, ref char e4, ref char e5, ref char e6, ref char e7, ref char e8, ref char e9, ref char e10, ref char e11, ref char h1, ref char h2, ref char h3, ref char h4, ref char h5, ref char b1, ref char b2, ref char b3, ref char b4, ref char b5,ref int HP,ref int power,ref char P, char[,] map, ref char direction)//реализация перемещения на нужную ячейку в связи с выбранным направлением direction, подсчет шагов
         {
-            int HP = 31;
-            int power = 5;
-            char h1 = 'H';
-            char h2 = 'H';
-            char h3 = 'H';
-            char h4 = 'H';
-            char h5 = 'H';
-            char b1 = 'B';
-            char b2 = 'B';
-            char b3 = 'B';
-            char b4 = 'B';
-            char b5 = 'B';
-            Healing(ref HP, ref h1, ref h2, ref h3, ref h4, ref h5);
-            Buff(ref power, HP, ref b1, ref b2, ref b3, ref b4, ref b5);
+             b1 = 'B';
+             b2 = 'B';
+             b3 = 'B';
+             b4 = 'B';
+             b5 = 'B';
+             h1 = 'H';
+             h2 = 'H';
+             h3 = 'H';
+             h4 = 'H';
+             h5 = 'H';
+             e1 = 'E';
+             e2 = 'E';
+             e3 = 'E';
+             e4 = 'E';
+             e5 = 'E';
+             e6 = 'E';
+             e7 = 'E';
+             e8 = 'E';
+             e9 = 'E';
+             e10 = 'E';
+             e11 = 'S';
+            HP = 31;
+            power = 5; 
+            GenerateMap(map, ref P, ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5);            
             int steps = 0;
             map = new char[25, 25];
             P = 'P';
@@ -314,6 +339,7 @@
                 {
                     while (true)
                     {
+                        map[12,12] = P;
                         switch (direction)
                         {
                             case 'w':
@@ -405,6 +431,7 @@
                                         power = 10 * 2;
                                     }
                                 }
+                                Fight(ref  e1, ref  e2, ref  e3, ref  e4, ref  e5, ref  e6, ref  e7, ref  e8, ref  e9, ref  e10, ref e11,map, ref P, ref HP, ref power);
                         }
                         // Также здесь надо пропоисать то, чтобы игрок не смог выйти за пределы карты
                     }
@@ -412,9 +439,30 @@
             }
             return direction;
         }
-        public static void Fight(char[,] map,ref char P, ref int HP, ref int power)//обмен ударами игрока и врага до полной потери здоровья одним из них
+        public static void Fight(ref char e1, ref char e2, ref char e3, ref char e4, ref char e5, ref char e6, ref char e7, ref char e8, ref char e9, ref char e10, ref char e11, char[,] map,ref char P, ref int HP, ref int power)//обмен ударами игрока и врага до полной потери здоровья одним из них
         {
-           // GenerateMap(char[,] map, ref char P, ref char e1, ref char e2, ref char e3, ref char e4, ref char e5, ref char e6, ref char e7, ref char e8, ref char e9, ref char e10, ref char e11, ref char h1, ref char h2, ref char h3, ref char h4, ref char h5, ref char b1, ref char b2, ref char b3, ref char b4, ref char b5)
+            char h1 = 'H';
+            char h2 = 'H';
+            char h3 = 'H';
+            char h4 = 'H';
+            char h5 = 'H';
+            char b1 = 'B';
+            char b2 = 'B';
+            char b3 = 'B';
+            char b4 = 'B';
+            char b5 = 'B';
+             e1 = 'E';
+             e2 = 'E';
+             e3 = 'E';
+             e4 = 'E';
+             e5 = 'E';
+             e6 = 'E';
+             e7 = 'E';
+             e8 = 'E';
+             e9 = 'E';
+             e10 = 'E';
+             e11 = 'S';
+            GenerateMap(map, ref P, ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5);
             map = new char[25, 25];
             int HP1 = 15;
             int power1 = 5;
@@ -442,127 +490,172 @@
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    //if(P == )
+                    if(P == e1)
                     {
-                        P = map[12, 12];
                         while (HP1 > 0)
                         {
-                            //координата P = координата e1
+                            P = e1;
                             HP1 = HP1 - power;
-                            //координата e1 = координата P
+                            e1 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e2)
+                    else if(HP1 <= 0)
+                    {
+                    e1 = '-';
+                    }
+                    else if(P == e2)
                     {
                         while (HP2 > 0)
                         {
-                            //координата P = координата e1
+                            P = e2;
                             HP2 = HP2 - power;
-                            //координата e1 = координата P
+                            e2 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e3)
+                    else if (HP2 <= 0)
+                    {
+                        e2 = '-';
+                    }
+                    else if(P == e3)
                     {
                         while (HP3 > 0)
                         {
-                            //координата P = координата e1
+                            P = e3;
                             HP3 = HP3 - power;
-                            //координата e1 = координата P
+                            e3 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e4)
+                    else if (HP3 <= 0)
+                    {
+                        e3 = '-';
+                    }
+                    else if (P == e4)
                     {
                         while (HP4 > 0)
                         {
-                            //координата P = координата e1
+                            P = e4;
                             HP4 = HP4 - power;
-                            //координата e1 = координата P
+                            e4 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e5)
+                    else if (HP4 <= 0)
+                    {
+                        e4 = '-';
+                    }
+                    else if(P == e5)
                     {
                         while (HP5 > 0)
                         {
-                            //координата P = координата e1
+                            P = e5;
                             HP5 = HP5 - power;
-                            //координата e1 = координата P
+                            e5 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e6)
+                    else if (HP5 <= 0)
+                    {
+                        e5 = '-';
+                    }
+                    else if(P == e6)
                     {
                         while (HP6 > 0)
                         {
-                            //координата P = координата e1
+                            P = e6;
                             HP6 = HP6 - power;
-                            //координата e1 = координата P
+                            e6 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e7)
+                    else if (HP6 <= 0)
+                    {
+                        e6 = '-';
+                    }
+                    else if(P == e7)
                     {
                         while (HP7 > 0)
                         {
-                            //координата P = координата e1
+                            P = e7;
                             HP7 = HP7 - power;
-                            //координата e1 = координата P
+                            e7 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e8)
+                    else if (HP7 <= 0)
+                    {
+                        e7 = '-';
+                    }
+                    else if(P == e8)
                     {
                         while (HP8 > 0)
                         {
-                            //координата P = координата e1
+                            P = e8;
                             HP8 = HP8 - power;
-                            //координата e1 = координата P
+                            e8 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e9)
+                    else if (HP8 <= 0)
+                    {
+                        e8 = '-';
+                    }
+                    else if(P == e9)
                     {
                         while (HP9 > 0)
                         {
-                            //координата P = координата e1
+                            P = e9;
                             HP9 = HP9 - power;
-                            //координата e1 = координата P
+                            e9 = P;
                             HP = HP - 5;
                         }
                     }
-                    //if(координата P == координата e10)
+                    else if (HP9 <= 0)
+                    {
+                        e9 = '-';
+                    }
+                    else if(P == e10)
                     {
                         while (HP10 > 0)
                         {
-                            //координата P = координата e1
+                            P = e10;
                             HP10 = HP10 - power;
-                            //координата e1 = координата P
+                            e10 = P;
                             HP = HP - 5;
                         }
+                    }
+                    else if (HP10 <= 0)
+                    {
+                        e10 = '-';
+                    }
+                    else if(P == e11)
+                    {
                         while (HP11 > 0)
                         {
-                            //координата P = координата e1
+                            P = e11;
                             HP11 = HP11 - power;
-                            //координата e1 = координата P
+                            e11 = P;
                             HP = HP - 7;
-                        }
+                        }                    
+                    }
+                    else if (HP11 <= 0)
+                    {
+                        e11 = '-';
                     }
                 }
             }
         }
-        public static void Healing(ref int HP, ref char h1, ref char h2, ref char h3, ref char h4, ref char h5)// лечение
+        public static void Healing(ref char h1, ref char h2, ref char h3, ref char h4, ref char h5)// лечение
         {
-            HP = 31;
             h1 = 'H';
             h2 = 'H';
             h3 = 'H';
             h4 = 'H';
             h5 = 'H';
         }
-        public static void Buff(ref int power, int HP, ref char b1, ref char b2, ref char b3, ref char b4, ref char b5)//увеличение силы
+        public static void Buff(ref char b1, ref char b2, ref char b3, ref char b4, ref char b5)//увеличение силы
         {
             b1 = 'B';
             b2 = 'B';
@@ -570,13 +663,12 @@
             b4 = 'B';
             b5 = 'B';
         }
-        public static void
-        SaveState(char[,] map)//сохранение в файл
+        public static void SaveState(char[,] map)//сохранение в файл
         {
             int HP = 0;
             int power = 0;
             ParametrsOfPlayer(ref power, ref HP);
-            using (FileStream fileStream = File.Open(@"C:Users\что-то\321.txt", FileMode.Create))
+            using (FileStream fileStream = File.Open(@"F:\321.txt", FileMode.Create))
             {
                 using (StreamWriter streamWriter = new StreamWriter(fileStream))
                 {
@@ -621,12 +713,13 @@
             char e8 = 'E';
             char e9 = 'E';
             char e10 = 'E';
-            char e11 = 'E';
+            char e11 = 'S';
             char[,] map = new char[25, 25];
             char P = 'P';
             int power = 5;
-            int HP = 30;
-            ParametrsOfPlayer(ref power, ref HP); GenerateMap(map, ref P, ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5);
+            int HP = 31;
+            char direction = 'k';
+            ParametrsOfPlayer(ref power, ref HP); GenerateMap(map, ref P, ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5); Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, map, ref direction);
         }
     }
 }
