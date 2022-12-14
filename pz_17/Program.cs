@@ -8,7 +8,7 @@
             power = 5;
             char[,] map = new char[25, 25];
             char P = 'P';                        
-            int i = 0;
+            int r = 0;
             char direction = '2';
             char h1 = 'H';
             char h2 = 'H';
@@ -31,14 +31,14 @@
             char e9 = 'E';
             char e10 = 'E';
             char e11 = 'S';
-            if (power == 10 && ((Move(ref  e1, ref  e2, ref  e3, ref  e4, ref  e5, ref  e6, ref  e7, ref  e8, ref  e9, ref  e10, ref  e11, ref  h1, ref  h2, ref  h3, ref  h4, ref  h5, ref  b1, ref  b2, ref  b3, ref  b4, ref  b5, ref  HP, ref  power, ref  P,map, ref direction) == 'w') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, map, ref direction) == 'a') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, map, ref direction) == 's') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, map, ref direction) == 'd')))
-            {
-                i++;
-                if (i == 5)
-                {
-                    power = 5;
-                }
-            }
+            //if (power == 10 && ((Move(ref  e1, ref  e2, ref  e3, ref  e4, ref  e5, ref  e6, ref  e7, ref  e8, ref  e9, ref  e10, ref  e11, ref  h1, ref  h2, ref  h3, ref  h4, ref  h5, ref  b1, ref  b2, ref  b3, ref  b4, ref  b5, ref  HP, ref  power, ref  P,ref map, ref direction) == 'w') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 'a') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 's') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 'd')))
+            //{
+            //    r++;
+            //    if (r == 5)
+            //    {
+            //        power = 5;
+            //    }
+            //}
             Console.WriteLine($"Player Health: {HP}");
             Console.WriteLine($"Player power: {power}");
         }
@@ -300,11 +300,40 @@
         }
         public static void UpdateMap()//обновление карты после действий
         {
-            //Все совершаемые в игре действия
-
-            Console.Clear();
+            char direction = 'k';
+            char[,] map = new char[25, 25];
+            char P = 'P';
+            char h1 = 'H';
+            char h2 = 'H';
+            char h3 = 'H';
+            char h4 = 'H';
+            char h5 = 'H';
+            char b1 = 'B';
+            char b2 = 'B';
+            char b3 = 'B';
+            char b4 = 'B';
+            char b5 = 'B';
+            char e1 = 'E';
+            char e2 = 'E';
+            char e3 = 'E';
+            char e4 = 'E';
+            char e5 = 'E';
+            char e6 = 'E';
+            char e7 = 'E';
+            char e8 = 'E';
+            char e9 = 'E';
+            char e10 = 'E';
+            char e11 = 'S';
+            int power = 5;
+            int HP = 31;
+            while (true)
+            {
+                ParametrsOfPlayer(ref power, ref HP);
+                Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref  e10, ref  e11, ref  h1, ref  h2, ref  h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, ref  map, ref  direction);
+                Console.Clear();
+            }
         }
-        public static char Move(ref char e1, ref char e2, ref char e3, ref char e4, ref char e5, ref char e6, ref char e7, ref char e8, ref char e9, ref char e10, ref char e11, ref char h1, ref char h2, ref char h3, ref char h4, ref char h5, ref char b1, ref char b2, ref char b3, ref char b4, ref char b5,ref int HP,ref int power,ref char P, char[,] map, ref char direction)//реализация перемещения на нужную ячейку в связи с выбранным направлением direction, подсчет шагов
+        public static char Move(ref char e1, ref char e2, ref char e3, ref char e4, ref char e5, ref char e6, ref char e7, ref char e8, ref char e9, ref char e10, ref char e11, ref char h1, ref char h2, ref char h3, ref char h4, ref char h5, ref char b1, ref char b2, ref char b3, ref char b4, ref char b5,ref int HP,ref int power,ref char P, ref char[,] map, ref char direction)//реализация перемещения на нужную ячейку в связи с выбранным направлением direction, подсчет шагов
         {
              b1 = 'B';
              b2 = 'B';
@@ -327,6 +356,7 @@
              e9 = 'E';
              e10 = 'E';
              e11 = 'S';
+            direction = Convert.ToChar(Console.ReadLine());
             HP = 31;
             power = 5; 
             GenerateMap(map, ref P, ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5);            
@@ -337,8 +367,7 @@
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    while (true)
-                    {
+                    
                         map[12,12] = P;
                         switch (direction)
                         {
@@ -363,32 +392,32 @@
                                 break;
                                 if (P == h1)
                                 {
-                                    h1 = '-';
+                                    h1 = '0';
                                     HP = 31;
                                 }
                                 else if (P == h2)
                                 {
-                                    h2 = '-';
+                                    h2 = '0';
                                     HP = 31;
                                 }
                                 else if (P == h3)
                                 {
-                                    h3 = '-';
+                                    h3 = '0';
                                     HP = 31;
                                 }
                                 else if (P == h4)
                                 {
-                                    h4 = '-';
+                                    h4 = '0';
                                     HP = 31;
                                 }
                                 else if (P == h5)
                                 {
-                                    h5 = '-';
+                                    h5 = '0';
                                     HP = 31;
                                 }
                                 if (P == b1)
                                 {
-                                    b1 = '-';
+                                    b1 = '0';
                                     power = 10;
                                     if ((power == 10) && ((P == b2) || (P == b3) || (P == b4) || (P == b5)))
                                     {
@@ -397,7 +426,7 @@
                                 }
                                 if (P == b2)
                                 {
-                                    b2 = '-';
+                                    b2 = '0';
                                     power = 10;
                                     if ((power == 10) && ((P == b1) || (P == b3) || (P == b4) || (P == b5)))
                                     {
@@ -406,7 +435,7 @@
                                 }
                                 if (P == b3)
                                 {
-                                    b2 = '-';
+                                    b2 = '0';
                                     power = 10;
                                     if ((power == 10) && ((P == b2) || (P == b1) || (P == b4) || (P == b5)))
                                     {
@@ -415,7 +444,7 @@
                                 }
                                 if (P == b4)
                                 {
-                                    b2 = '-';
+                                    b2 = '0';
                                     power = 10;
                                     if ((power == 10) && ((P == b2) || (P == b1) || (P == b3) || (P == b5)))
                                     {
@@ -424,16 +453,15 @@
                                 }
                                 if (P == b5)
                                 {
-                                    b2 = '-';
+                                    b2 = '0';
                                     power = 10;
                                     if ((power == 10) && ((P == b2) || (P == b1) || (P == b3) || (P == b4)))
                                     {
                                         power = 10 * 2;
                                     }
                                 }
-                                Fight(ref  e1, ref  e2, ref  e3, ref  e4, ref  e5, ref  e6, ref  e7, ref  e8, ref  e9, ref  e10, ref e11,map, ref P, ref HP, ref power);
-                        }
-                        // Также здесь надо пропоисать то, чтобы игрок не смог выйти за пределы карты
+                                //Fight(ref  e1, ref  e2, ref  e3, ref  e4, ref  e5, ref  e6, ref  e7, ref  e8, ref  e9, ref  e10, ref e11,map, ref P, ref HP, ref power);
+                        
                     }
                 }
             }
@@ -502,7 +530,7 @@
                     }
                     else if(HP1 <= 0)
                     {
-                    e1 = '-';
+                    e1 = '0';
                     }
                     else if(P == e2)
                     {
@@ -516,7 +544,7 @@
                     }
                     else if (HP2 <= 0)
                     {
-                        e2 = '-';
+                        e2 = '0';
                     }
                     else if(P == e3)
                     {
@@ -530,7 +558,7 @@
                     }
                     else if (HP3 <= 0)
                     {
-                        e3 = '-';
+                        e3 = '0';
                     }
                     else if (P == e4)
                     {
@@ -544,7 +572,7 @@
                     }
                     else if (HP4 <= 0)
                     {
-                        e4 = '-';
+                        e4 = '0';
                     }
                     else if(P == e5)
                     {
@@ -558,7 +586,7 @@
                     }
                     else if (HP5 <= 0)
                     {
-                        e5 = '-';
+                        e5 = '0';
                     }
                     else if(P == e6)
                     {
@@ -572,7 +600,7 @@
                     }
                     else if (HP6 <= 0)
                     {
-                        e6 = '-';
+                        e6 = '0';
                     }
                     else if(P == e7)
                     {
@@ -586,7 +614,7 @@
                     }
                     else if (HP7 <= 0)
                     {
-                        e7 = '-';
+                        e7 = '0';
                     }
                     else if(P == e8)
                     {
@@ -600,7 +628,7 @@
                     }
                     else if (HP8 <= 0)
                     {
-                        e8 = '-';
+                        e8 = '0';
                     }
                     else if(P == e9)
                     {
@@ -614,7 +642,7 @@
                     }
                     else if (HP9 <= 0)
                     {
-                        e9 = '-';
+                        e9 = '0';
                     }
                     else if(P == e10)
                     {
@@ -628,7 +656,7 @@
                     }
                     else if (HP10 <= 0)
                     {
-                        e10 = '-';
+                        e10 = '0';
                     }
                     else if(P == e11)
                     {
@@ -642,7 +670,7 @@
                     }
                     else if (HP11 <= 0)
                     {
-                        e11 = '-';
+                        e11 = '0';
                     }
                 }
             }
@@ -680,8 +708,7 @@
                         {
                             streamWriter.Write(map[i, j] + " ");
                         }
-                        streamWriter.WriteLine();
-                        streamWriter.WriteLine();
+                        streamWriter.WriteLine();              
                     }
                 }
             }
@@ -719,7 +746,7 @@
             int power = 5;
             int HP = 31;
             char direction = 'k';
-            ParametrsOfPlayer(ref power, ref HP); GenerateMap(map, ref P, ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5); Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, map, ref direction);
+            UpdateMap();
         }
     }
 }
