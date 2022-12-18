@@ -1,4 +1,4 @@
-﻿namespace pz_17
+﻿namespace primer
 {
     internal class Program
     {
@@ -31,13 +31,13 @@
             char e9 = 'E';
             char e10 = 'E';
             char e11 = 'S';
-            //if (power == 10 && ((Move(ref  e1, ref  e2, ref  e3, ref  e4, ref  e5, ref  e6, ref  e7, ref  e8, ref  e9, ref  e10, ref  e11, ref  h1, ref  h2, ref  h3, ref  h4, ref  h5, ref  b1, ref  b2, ref  b3, ref  b4, ref  b5, ref  HP, ref  power, ref  P,ref map, ref direction) == 'w') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 'a') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 's') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 'd')))
+            //if (power == 10 && ((Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 'w') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 'a') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 's') || (Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P,ref map, ref direction) == 'd')))
             //{
-            //    r++;
-            //    if (r == 5)
-            //    {
-            //        power = 5;
-            //    }
+            // r++;
+            // if (r == 5)
+            // {
+            // power = 5;
+            // }
             //}
             Console.WriteLine($"Player Health: {HP}");
             Console.WriteLine($"Player power: {power}");
@@ -53,6 +53,8 @@
             h3 = 'H';
             h4 = 'H';
             h5 = 'H';
+            char direction = Convert.ToChar(Console.ReadLine());
+            int steps = 0;
             Healing(ref h1, ref h2, ref h3, ref h4, ref h5);
             Buff(ref b1, ref b2, ref b3, ref b4, ref b5);
             Random rnd = new Random();
@@ -115,7 +117,6 @@
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    map[12, 12] = P;
                     if ((i == x1h && j == y1h))
                     {
                         map[i, j] = h1;
@@ -128,7 +129,8 @@
                     {
                         map[i, j] = h2;
                     }
-                    else if ((i == x1h && j == y1h) || (i == 12 && j == 12))
+                    else if ((i == x1h && j == y1h) || (i == 12 && j ==
+                    12))
                     {
                         map[i, j] = h2;
                     }
@@ -292,83 +294,17 @@
                     {
                         map[i, j] = '-';
                     }
+
                     map[12, 12] = P;
                     Console.Write(map[i, j] + " ");
                 }
                 Console.WriteLine();
             }
-        }
-        public static void UpdateMap()//обновление карты после действий
-        {
-            char direction = Convert.ToChar(Console.ReadLine());
-            char[,] map = new char[25, 25];
-            char P = 'P';
-            char h1 = 'H';
-            char h2 = 'H';
-            char h3 = 'H';
-            char h4 = 'H';
-            char h5 = 'H';
-            char b1 = 'B';
-            char b2 = 'B';
-            char b3 = 'B';
-            char b4 = 'B';
-            char b5 = 'B';
-            char e1 = 'E';
-            char e2 = 'E';
-            char e3 = 'E';
-            char e4 = 'E';
-            char e5 = 'E';
-            char e6 = 'E';
-            char e7 = 'E';
-            char e8 = 'E';
-            char e9 = 'E';
-            char e10 = 'E';
-            char e11 = 'S';
-            int power = 5;
-            int HP = 31;
-            while (true)
-            {
-                ParametrsOfPlayer(ref power, ref HP);
-                Move(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5, ref HP, ref power, ref P, ref map, ref direction);
-                Console.Clear();
-            }
-        }
-        public static char Move(ref char e1, ref char e2, ref char e3, ref char e4, ref char e5, ref char e6, ref char e7, ref char e8, ref char e9, ref char e10, ref char e11, ref char h1, ref char h2, ref char h3, ref char h4, ref char h5, ref char b1, ref char b2, ref char b3, ref char b4, ref char b5, ref int HP, ref int power, ref char P, ref char[,] map, ref char direction)//реализация перемещения на нужную ячейку в связи с выбранным направлением direction, подсчет шагов
-        {
-            b1 = 'B';
-            b2 = 'B';
-            b3 = 'B';
-            b4 = 'B';
-            b5 = 'B';
-            h1 = 'H';
-            h2 = 'H';
-            h3 = 'H';
-            h4 = 'H';
-            h5 = 'H';
-            e1 = 'E';
-            e2 = 'E';
-            e3 = 'E';
-            e4 = 'E';
-            e5 = 'E';
-            e6 = 'E';
-            e7 = 'E';
-            e8 = 'E';
-            e9 = 'E';
-            e10 = 'E';
-            e11 = 'S';
-            direction = Convert.ToChar(Console.ReadLine());
-            HP = 31;
-            power = 5;
-            GenerateMap(map, ref P, ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5);
-            int steps = 0;
-            map = new char[25, 25];
-            P = 'P';
+            //ДВИЖЕНИЕ
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-
-                    map[12, 12] = P;
                     switch (direction)
                     {
                         case 'w':
@@ -460,12 +396,48 @@
                                     power = 10 * 2;
                                 }
                             }
-                            //Fight(ref  e1, ref  e2, ref  e3, ref  e4, ref  e5, ref  e6, ref  e7, ref  e8, ref  e9, ref  e10, ref e11,map, ref P, ref HP, ref power);
-
+                            Console.WriteLine(steps);
+                            //Fight(ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11,map, ref P, ref HP, ref power);
                     }
+                    Console.Write(map[i, j]);
                 }
+                Console.WriteLine();
             }
-            return direction;
+        }
+        public static void UpdateMap()//обновление карты после действий
+        {
+            char direction = 'k';
+            char[,] map = new char[25, 25];
+            char P = 'P';
+            char h1 = 'H';
+            char h2 = 'H';
+            char h3 = 'H';
+            char h4 = 'H';
+            char h5 = 'H';
+            char b1 = 'B';
+            char b2 = 'B';
+            char b3 = 'B';
+            char b4 = 'B';
+            char b5 = 'B';
+            char e1 = 'E';
+            char e2 = 'E';
+            char e3 = 'E';
+            char e4 = 'E';
+            char e5 = 'E';
+            char e6 = 'E';
+            char e7 = 'E';
+            char e8 = 'E';
+            char e9 = 'E';
+            char e10 = 'E';
+            char e11 = 'S';
+            int power = 5;
+            int HP = 31;
+            while (true)
+            {
+                ParametrsOfPlayer(ref power, ref HP);
+                GenerateMap(map, ref P, ref e1, ref e2, ref e3, ref e4, ref e5, ref e6, ref e7, ref e8, ref e9, ref e10, ref e11, ref h1, ref h2, ref h3, ref h4, ref h5, ref b1, ref b2, ref b3, ref b4, ref b5);
+                Console.Clear();
+            }
         }
         public static void Fight(ref char e1, ref char e2, ref char e3, ref char e4, ref char e5, ref char e6, ref char e7, ref char e8, ref char e9, ref char e10, ref char e11, char[,] map, ref char P, ref int HP, ref int power)//обмен ударами игрока и врага до полной потери здоровья одним из них
         {
